@@ -13,11 +13,6 @@ jobs:
         if: success()
         run: echo yarn test etc.
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
   two:
     name: My second job
     runs-on: ubuntu-latest
@@ -27,21 +22,11 @@ jobs:
       - name: Run Danger
         run: echo Run Danger
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
   three:
     name: My third job
     runs-on: ubuntu-latest
     needs: one
-    if: endsWith(github.ref, 'master') && github.event_name == 'push'
+    if: github.event_name == 'push' && (endsWith(github.ref, 'master') || endsWith(github.ref, 'develop') || endsWith(github.ref, 'staging'))
     steps:
       - name: Pull request merged
         run: echo merged
-
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
