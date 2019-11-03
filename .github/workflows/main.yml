@@ -36,7 +36,7 @@ jobs:
     name: My third job
     runs-on: ubuntu-latest
     needs: one
-    if: github.action == 'closed' && github.pull_request.merged == 'true'
+    # if: github.action == 'closed' && github.pull_request.merged == 'true'
     steps:
       - name: Pull request merged
         run: echo merged
