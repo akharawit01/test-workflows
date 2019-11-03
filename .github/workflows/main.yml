@@ -23,7 +23,7 @@ jobs:
     needs: one
     steps:
       - name: Run Danger
-        run: echo ${{ sec}}
+        run: echo Run Danger
 
       - name: Dump GitHub context
         env:
