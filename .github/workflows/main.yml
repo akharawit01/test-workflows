@@ -12,9 +12,34 @@ jobs:
       - name: Run Check
         run: echo yarn test etc.
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
   two:
     name: My second job
     runs-on: ubuntu-latest
+    needs: one
     steps:
       - name: Run Danger
-        run: echo $GITHUB_EVENT_NAME
+        run: echo ${{ sec}}
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  three:
+    name: My third job
+    runs-on: ubuntu-latest
+    needs: [one, two]
+    step:
+      - name: Pull request merged
+        if: github.action == 'closed' && github.pull_request.merged == 'true'
+        run: echo merged
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
