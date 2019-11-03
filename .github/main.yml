@@ -1,0 +1,20 @@
+name: test-workflow
+on: [push, pull_request]
+
+jobs:
+  one:
+    name: My first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Install
+        run: echo yarn install
+
+      - name: Run Check
+        run: echo yarn test etc.
+
+  two:
+    name: My second job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Danger
+        run: echo ${{ GITHUB_EVENT_NAME }}
