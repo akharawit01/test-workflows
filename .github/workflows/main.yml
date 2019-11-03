@@ -28,5 +28,10 @@ jobs:
     needs: one
     if: github.event_name == 'push' && (endsWith(github.ref, 'master') || endsWith(github.ref, 'develop') || endsWith(github.ref, 'staging'))
     steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Pull request merged
-        run: echo merged
+        run: echo merged ${{ steps.extract_branch.outputs.branch }}
