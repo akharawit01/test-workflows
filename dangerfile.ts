@@ -55,5 +55,5 @@ for (const changedFile of changedFiles) {
     warn(`Changed an important file: ${changedFile}`);
   }
 
-  warn(`xxx=> ${eslint()}`);
+  eslint();
 }
