@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: borales/actions-yarn@v2.0.0
-      - name: Danger-plugin-eslint
-        run: yarn add danger-plugin-eslint --dev
+        with:
+          cmd: add danger-plugin-eslint --dev
       - name: DangerJS
         uses: danger/danger-js@9.1.8
         env:
