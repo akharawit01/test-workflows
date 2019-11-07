@@ -6,12 +6,15 @@ jobs:
     name: My first job
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+      - name: danger plugin
+        run: yarn add danger-plugin-eslint -D
       - name: Run Install
-        run: echo yarn install
-
-      - name: Run Check
-        if: success()
-        run: echo yarn test etc.
+        run: yarn install
+      - name: DangerJS
+        uses: danger/danger-js@9.1.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   two:
     name: My second job

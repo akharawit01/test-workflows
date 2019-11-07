@@ -1,0 +1,11 @@
+const Action = {
+  CREATE_EXPERIMENTEE: "CREATE_EXPERIMENTEE",
+  CREATE_EXPERIMENTEE_SUCCESS: "CREATE_EXPERIMENTEE_SUCCESS",
+  CREATE_EXPERIMENTEE_ERROR: "CREATE_EXPERIMENTEE_ERROR",
+  createExperimentee: body => ({
+    type: Action.CREATE_EXPERIMENTEE,
+    body
+  })
+};
+
+export default Action;
