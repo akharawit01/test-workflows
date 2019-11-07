@@ -9,15 +9,15 @@ jobs:
       - name: Run Install
         run: yarn install
 
-      - name: Run Check
-        run: yarn test
+  danger:
+    runs-on: ubuntu-latest
+    needs: install-and-check
+    steps:
+      - uses: actions/checkout@master
+      - name: DangerJS
+        uses: danger/danger-js@9.1.8
         env:
-          CI: true
-
-      - name: Run tesssssss
-        run: yarn test
-        env:
-          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   two:
     name: My second job
