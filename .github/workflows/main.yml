@@ -13,19 +13,20 @@ jobs:
     test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@v1
-      with:
-        version: 10.x
-    - name: install yarn
-      run: npm install -g yarn
-    - name: yarn install, build, and test
-      run: |
-        yarn install --frozen-lockfile
-    - name: Danger
-      run: yarn danger ci
-      env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@master
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          version: 10.x
+      - name: install yarn
+        run: npm install -g yarn
+      - name: yarn install, build, and test
+        run: |
+          yarn install --frozen-lockfile
+      - name: Danger
+        run: yarn danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   two:
     name: My second job
