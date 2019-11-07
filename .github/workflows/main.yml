@@ -10,16 +10,24 @@ jobs:
         run: yarn install
 
   danger:
+    test:
     runs-on: ubuntu-latest
-    needs: one
     steps:
-      - uses: actions/checkout@master
-      - name: Run Install
-        run: yarn install
-      - name: DangerJS
-        uses: danger/danger-js@9.1.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@master
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+        with:
+          version: 10.x
+    - name: install yarn
+      run: npm install -g yarn
+    - name: yarn install, build, and test
+      run: |
+        yarn install --frozen-lockfile
+        yarn build
+        yarn test
+    - name: Danger
+      run: yarn danger ci
+      env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   two:
     name: My second job
