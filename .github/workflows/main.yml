@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Install
-        run: yarn start
+        run: yarn install
 
       - name: Run Check
         run: yarn test
