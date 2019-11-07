@@ -11,8 +11,11 @@ jobs:
 
   danger:
     runs-on: ubuntu-latest
+    needs: one
     steps:
       - uses: actions/checkout@master
+      - name: Run Install
+        run: yarn install
       - name: DangerJS
         uses: danger/danger-js@9.1.8
         env:
