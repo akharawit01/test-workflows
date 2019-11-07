@@ -7,11 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Install
-        run: echo yarn install
+        run: yarn start
 
       - name: Run Check
-        if: success()
-        run: echo yarn test etc.
+        run: yarn test
+        env:
+          CI: true
 
   two:
     name: My second job

@@ -1,0 +1,1 @@
+export const isAdmin = (username, email) => username === "admin" && email === "admin@20scoops.com"
