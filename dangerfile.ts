@@ -26,32 +26,32 @@ import eslint from "danger-plugin-eslint";
 // Warnings
 // ========
 
-const importantFiles = [
-  ".github/workflows/main.yml",
-  ".github/CODEOWNERS",
-  ".github/pull_request_template",
+// const importantFiles = [
+//   ".github/workflows/main.yml",
+//   ".github/CODEOWNERS",
+//   ".github/pull_request_template",
 
-  ".gitignore",
+//   ".gitignore",
 
-  "dangerfile.ts",
-  "package.json",
-  "package-lock.json",
-  "README.md"
-];
+//   "dangerfile.ts",
+//   "package.json",
+//   "package-lock.json",
+//   "README.md"
+// ];
 
-const changedFiles = [
-  ...danger.git.modified_files,
-  ...danger.git.created_files,
-  ...danger.git.deleted_files
-];
+// const changedFiles = [
+//   ...danger.git.modified_files,
+//   ...danger.git.created_files,
+//   ...danger.git.deleted_files
+// ];
 
-for (const changedFile of changedFiles) {
-  if (!changedFile.startsWith(`students/${danger.github.pr.user.login}`)) {
-    warn(`File change outside the workdir: ${changedFile}`);
-  }
+// for (const changedFile of changedFiles) {
+//   if (!changedFile.startsWith(`students/${danger.github.pr.user.login}`)) {
+//     warn(`File change outside the workdir: ${changedFile}`);
+//   }
 
-  if (importantFiles.includes(changedFile)) {
-    warn(`Changed an important file: ${changedFile}`);
-  }
-}
+//   if (importantFiles.includes(changedFile)) {
+//     warn(`Changed an important file: ${changedFile}`);
+//   }
+// }
 eslint();
