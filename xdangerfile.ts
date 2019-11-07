@@ -3,6 +3,7 @@
  *
  * @see https://github.com/danger/danger-js
  * @see https://danger.systems/js/
+ * @see https://danger.systems/js/danger-plugin-eslint
  */
 
 import { danger, fail, warn } from "danger";
